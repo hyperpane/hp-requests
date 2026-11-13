@@ -1,0 +1,39 @@
+{
+  "manifest": 1,
+  "id": "requests",
+  "name": "Requests",
+  "version": "0.0.1",
+  "publisher": "hyperpane",
+  "description": "A Postman alternative: HTTP, GraphQL, Server-Sent Events and WebSocket requests sent from the server, collections in the project, environments, history, cURL and Postman import.",
+  "icon": "icon.svg",
+  "category": "Web",
+  "engines": {
+    "hyperpane": ">=0.2.0",
+    "node": ">=22.15.0"
+  },
+  "client": {
+    "main": "main.tsx"
+  },
+  "server": {
+    "runtime": "node",
+    "main": "main.ts"
+  },
+  "contributes": {
+    "nodes": [
+      {
+        "kind": "requests",
+        "title": "Requests",
+        "icon": "icon.svg",
+        "size": [
+          1000,
+          640
+        ]
+      }
+    ]
+  },
+  "signature": {
+    "key": "ed25519:5LgmP9NjLnpvz48igrFekSqi+4k6gzaO8sNwlsgNKFc=",
+    "sig": "dQ8YXhZR0CEFSK6wUJ3Ornuu3k/h2fg+58kqyZoi73G0ycPhu07mWDWEko0mtgMvlYzQxzHyJ/dvNxQFu7iDBA==",
+    "server": "4S0J0T7ibihqhmsXKmgHrq2GvdlceQTzRPif0bK7+606Q0VIRaPZOd316zfmyKErCGGWe35vhgLu2A2LSnlwBQ=="
+  }
+}
