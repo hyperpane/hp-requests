@@ -1,69 +1,92 @@
+![Requests](media/banner.svg)
+
 # Requests
 
-A Postman alternative: send requests and read their answers, in one
-window laid out as Postman is: a sidebar (the environment, your collections, the history), a strip of
-open tabs, and the open request with its answer below or beside it.
+Test every API from your canvas: HTTP, WebSocket and SSE. Requests is a
+Postman alternative in a window, laid out as Postman is: a sidebar with
+the environment, your collections and the history, a strip of open tabs,
+and the open request with its answer below or beside it. Collections live
+in the project, so your team gets them with the code.
 
-Every request goes from the server, not from the window: no CORS, the
-server's own `localhost` in reach, and certificates checked or not, as
-each request says.
+## Features
 
-## HTTP
-
-- **Any method** (GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS, or one of
-  your own), the URL with `{{variables}}` colored (red when they aren't
-  set), **Send** with ⌘↵ (Ctrl+Enter), **Save** with ⌘S (Ctrl+S).
-- **Params**, kept in step with the URL's query; **Headers**, sent as typed
+- **Any HTTP method** (GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS, or one
+  of your own), with `{{variables}}` colored in the URL (red when they
+  aren't set).
+- **Params**, kept in step with the URL's query; **headers** sent as typed
   (their case, repeated ones too), with the common names suggested.
-- **Body**: JSON (with Beautify), text, XML, HTML or JavaScript, a
-  URL-encoded form, a multipart form (text fields and files on the server),
+- **Every kind of body:** JSON (with Beautify), text, XML, HTML or
+  JavaScript, a URL-encoded form, a multipart form (text fields and files),
   a file as it is, or **GraphQL** (a query and its variables).
-- **Auth**: a bearer token, Basic, an API key (in a header or the query),
+- **Auth:** a bearer token, Basic, an API key (in a header or the query),
   or inherited from the folder or the collection.
-- **Settings**: the timeout, following redirects (up to 10), ignoring TLS
-  errors.
-- **The answer**: the status, time and size; the body pretty (a JSON tree
-  to search), raw, or previewed (images, HTML); copied or saved to a file;
-  the headers in order; the cookies it set; **timings** as a waterfall
-  (lookup, connect, TLS, first byte, download) with the redirects, the
-  address and the certificate; and the request as a **cURL** command.
-  gzip, deflate and Brotli are decompressed; bodies over 50 MB are cut.
+- **Per-request settings:** the timeout, following redirects (up to 10),
+  ignoring TLS errors.
+- **A full answer:** the status, time and size; the body pretty (a JSON
+  tree you can search), raw, or previewed (images, HTML); copied or saved
+  to a file; the headers in order; the cookies it set; **timings** as a
+  waterfall (lookup, connect, TLS, first byte, download) with the
+  redirects, the address and the certificate; and the request as a
+  **cURL** command.
+- **WebSocket:** headers, subprotocols, ignoring TLS errors, and
+  reconnecting when it drops. Read the messages as a **chat** (what you
+  send on the right, what comes on the left; JSON as a tree, binary as
+  hex) or as a **log** (a line a message, with direction, time and size;
+  filter, copy, clear). Send text, JSON, or bytes as hex or base64; keep a
+  message as a template and click it to send it again; ping; disconnect
+  with the closing handshake.
+- **Server-Sent Events:** a request whose answer is `text/event-stream`
+  shows its events as they're sent (the name, the id, the data).
+- **Collections** with folders, their own variables and auth, kept in the
+  project.
+- **Environments:** sets of variables chosen in the sidebar. Secret
+  variables (the lock) keep their values on this machine only.
+- **History:** the last 300 requests you sent. Click one to open it again.
+- **Import and export:** paste a **cURL** command (as a browser's “Copy as
+  cURL” gives it) to open it as a request, or import a **Postman**
+  collection (v2.1) or environment. Any request copies as cURL; a
+  collection exports as a Postman v2.1 file.
 
-## WebSocket
+## How to use
 
-Headers, subprotocols, ignoring TLS errors, and reconnecting when it
-drops. The messages show two ways, switched with one click:
+1. Open it: right-click the canvas and choose **New Requests**.
+2. Make a collection in the sidebar, or paste a cURL command or import a
+   Postman collection.
+3. Type a URL, pick the method, and **Send** (⌘↵, Ctrl+Enter on Windows
+   and Linux). **Save** it to a collection with ⌘S (Ctrl+S).
+4. For a WebSocket, choose **New WebSocket**, connect, and type in the
+   composer: Enter sends, Shift+Enter starts a new line.
 
-- **Chat**: what you send on the right, what comes on the left; JSON laid
-  out as a tree, binary as hex; a line for connecting, closing (with the
-  code and who closed it) and errors.
-- **Log**: a line a message, with its direction, time and size; filter,
-  copy, clear.
+## Good to know
 
-The composer sends text, JSON, or bytes as hex or base64: Enter sends,
-Shift+Enter is a new line. Keep a message as a template (it's saved with
-the request) and click it to send it again. Ping, and disconnect with the
-closing handshake.
+- Every request goes from the server, not from the window: no CORS, the
+  server's own `localhost` in reach, and certificates checked or not, as
+  each request says.
+- gzip, deflate and Brotli answers are decompressed; bodies over 50 MB are
+  cut.
+- Collections are kept in `.hyperpane/requests/collections.json`: commit
+  them and your team has them. Environments are kept in the project too,
+  except secret values, which stay on this machine. History stays on this
+  machine.
 
-## Event streams (SSE)
+## How it works
 
-A request whose answer is `text/event-stream`: connect, and its events
-come as they're sent (the name, the id, the data).
+The window is the client part; requests are sent by its server part, a
+Node process next to the project, which also keeps the collections,
+environments and history. WebSocket and event-stream connections live
+there too, and their messages stream to the window.
 
-## Collections, environments, history
+| Where | What it is |
+| --- | --- |
+| `src/server/` | The server part: HTTP (`http/`), WebSocket (`ws/`), event streams (`sse.ts`), the store (`store.ts`). |
+| `src/shared/` | Requests, answers, collections and variables, and the cURL and Postman formats. |
+| `src/client/` | The window: the sidebar, tabs, the request's panels, the answer, and the WebSocket views. |
+| `test/` | The tests. |
 
-- **Collections** (folders, requests, their own variables and auth) are
-  kept in the project, in `.hyperpane/requests/collections.json`: commit them
-  and your team has them.
-- **Environments** are sets of variables, chosen in the sidebar; they win
-  over a collection's. They're kept in the project too, except the values
-  of **secret** variables (the lock), which stay on this machine.
-- **History**: the last 300 requests sent, on this machine. Click one to
-  open it again.
+## Develop
 
-## Import and export
+    ./build.sh --test
 
-Paste a **cURL** command (as a browser's “Copy as cURL” gives it) to open
-it as a request, or a **Postman** collection (v2.1) or environment to add
-it to the project. Any request copies as cURL; a collection exports as a
-Postman v2.1 file.
+## License
+
+MIT, © 2026 Astralyx. See [LICENSE](LICENSE).

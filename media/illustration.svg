@@ -1,0 +1,36 @@
+<g font-family="Inter, -apple-system, 'Segoe UI', sans-serif" font-size="13">
+  <path d="M0 0h150v404H16a16 16 0 0 1-16-16z" fill="#0f131c"/>
+  <line x1="150" y1="0" x2="150" y2="404" stroke="#232a38"/>
+  <text x="16" y="28" fill="#9aa3b6" font-size="11" font-weight="600" letter-spacing="1">COLLECTIONS</text>
+  <text x="16" y="56" fill="#f4f6fb" font-weight="600">Shop API</text>
+  <g font-size="12"><text x="28" y="82" fill="#3fb950" font-weight="700">GET</text><text x="62" y="82" fill="#c9d1e0">Products</text>
+  <rect x="8" y="94" width="134" height="26" rx="6" fill="#7c6cf2" fill-opacity="0.18"/>
+  <text x="28" y="111" fill="#d29922" font-weight="700">POST</text><text x="68" y="111" fill="#f4f6fb">Order</text>
+  <text x="28" y="140" fill="#58a6ff" font-weight="700">PUT</text><text x="62" y="140" fill="#c9d1e0">Cart</text>
+  <text x="28" y="169" fill="#bc8cff" font-weight="700">WS</text><text x="56" y="169" fill="#c9d1e0">Live chat</text></g>
+  <rect x="166" y="16" width="358" height="34" rx="8" fill="#0c0f15" stroke="#262d3c"/>
+  <text x="180" y="38" fill="#d29922" font-weight="700">POST</text>
+  <text x="222" y="38" fill="#c9d1e0">{{base}}/orders</text>
+  <rect x="452" y="21" width="64" height="24" rx="6" fill="#7c6cf2"/><text x="484" y="38" fill="#fff" font-weight="600" text-anchor="middle">Send</text>
+  <g font-size="12"><text x="168" y="76" fill="#f4f6fb" font-weight="600">Body</text><text x="212" y="76" fill="#9aa3b6">Headers</text><text x="270" y="76" fill="#9aa3b6">Auth</text></g>
+  <line x1="166" y1="86" x2="524" y2="86" stroke="#232a38"/>
+  <rect x="166" y="85" width="34" height="2" rx="1" fill="#7c6cf2"/>
+  <g font-family="'JetBrains Mono', Menlo, monospace" font-size="12">
+    <text x="172" y="108" fill="#9aa3b6">{</text>
+    <text x="186" y="126"><tspan fill="#58a6ff">"product"</tspan><tspan fill="#9aa3b6">: </tspan><tspan fill="#a5d6ff">"hoodie"</tspan><tspan fill="#9aa3b6">,</tspan></text>
+    <text x="186" y="144"><tspan fill="#58a6ff">"size"</tspan><tspan fill="#9aa3b6">: </tspan><tspan fill="#a5d6ff">"M"</tspan></text>
+    <text x="172" y="162" fill="#9aa3b6">}</text>
+  </g>
+  <rect x="166" y="184" width="358" height="204" rx="10" fill="#0c0f15" stroke="#232a38"/>
+  <rect x="180" y="198" width="66" height="22" rx="11" fill="#3fb950" fill-opacity="0.18"/><text x="213" y="214" fill="#3fb950" font-weight="700" text-anchor="middle" font-size="12">201</text>
+  <text x="258" y="214" fill="#9aa3b6" font-size="12">Created · 84 ms · 312 B</text>
+  <g font-family="'JetBrains Mono', Menlo, monospace" font-size="12">
+    <text x="182" y="248" fill="#9aa3b6">{</text>
+    <text x="196" y="268"><tspan fill="#58a6ff">"id"</tspan><tspan fill="#9aa3b6">: </tspan><tspan fill="#ffa657">4821</tspan><tspan fill="#9aa3b6">,</tspan></text>
+    <text x="196" y="288"><tspan fill="#58a6ff">"status"</tspan><tspan fill="#9aa3b6">: </tspan><tspan fill="#a5d6ff">"paid"</tspan><tspan fill="#9aa3b6">,</tspan></text>
+    <text x="196" y="308"><tspan fill="#58a6ff">"total"</tspan><tspan fill="#9aa3b6">: </tspan><tspan fill="#ffa657">59.9</tspan></text>
+    <text x="182" y="328" fill="#9aa3b6">}</text>
+  </g>
+  <rect x="180" y="348" width="80" height="6" rx="3" fill="#58a6ff" fill-opacity="0.7"/><rect x="260" y="348" width="120" height="6" rx="3" fill="#bc8cff" fill-opacity="0.7"/><rect x="380" y="348" width="40" height="6" rx="3" fill="#3fb950" fill-opacity="0.7"/>
+  <text x="180" y="374" fill="#5d6678" font-size="11">DNS · connect · TLS · first byte · download</text>
+</g>

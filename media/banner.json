@@ -1,0 +1,7 @@
+{
+  "accent": "#7c6cf2",
+  "tagline": "Test every API from your canvas: HTTP, WebSocket and SSE.",
+  "chips": ["HTTP", "WebSocket", "SSE", "cURL"],
+  "window": "Requests",
+  "illustration": "illustration.svg"
+}
